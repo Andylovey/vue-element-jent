@@ -1,4 +1,4 @@
-# hello-world
+# vue-element-jent
 
 ## Project setup
 ```
