@@ -1,24 +1,15 @@
 # vue-element-jent
 
-## Project setup
-```
-yarn install
-```
+基于element开发的组件库
 
-### Compiles and hot-reloads for development
-```
-yarn serve
-```
+# 注意
+先执行npm init 写入入口文件 否则可能会下载包并使用的时候会报错找不到包
 
-### Compiles and minifies for production
-```
-yarn build
-```
+npm address
 
-### Lints and fixes files
-```
-yarn lint
-```
+## 发布包
+npm publish
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+## 更新包
+修改package.json的version
+npm publish

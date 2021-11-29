@@ -1,6 +1,6 @@
 {
   "name": "vue-element-jent",
-  "version": "0.1.0",
+  "version": "0.1.5",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
@@ -38,5 +38,17 @@
     "> 1%",
     "last 2 versions",
     "not dead"
-  ]
+  ],
+  "description": "基于element开发的组件库",
+  "main": "src/components/index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Andylovey/vue-element-jent.git"
+  },
+  "author": "Jent_xu",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Andylovey/vue-element-jent/issues"
+  },
+  "homepage": "https://github.com/Andylovey/vue-element-jent#readme"
 }
