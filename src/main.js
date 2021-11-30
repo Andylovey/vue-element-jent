@@ -7,6 +7,9 @@ Vue.use(ElementUI);
 // 调试
 import VueElementJent from './components/index'
 Vue.use(VueElementJent)
+// 图片裁剪
+import VueCropper from 'vue-cropper'
+Vue.use(VueCropper)
 
 
 Vue.config.productionTip = false

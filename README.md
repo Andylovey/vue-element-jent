@@ -13,3 +13,28 @@ npm publish
 ## 更新包
 修改package.json的version
 npm publish
+
+
+# 使用方式
+yarn add vue-element-jent
+
+import VueElementJent from 'vue-element-jent'
+Vue.use(VueElementJent)
+
+# 组件信息
+
+1.jent-button 新增了 color 属性
+
+2.jent-cropper-upload 新增了支持上传图片时做裁剪
+
+<JentCropperUpload
+    :autoCropWidth="120"
+    :autoCropHeight="120"
+    @confirmCropper="hanldeConfirmCropper"
+    :imageUrl="imageUrl"
+></JentCropperUpload>
+
+autoCropWidth：生成截图框宽度
+autoCropHeight: 生成截图框高度
+confirmCropper：确定上传事件
+imageUrl：确定上传后生成的图片路径

@@ -1,6 +1,12 @@
 <template>
   <div id="app">
     <JentButton>1</JentButton>
+    <JentCropperUpload
+      :autoCropWidth="200"
+      :autoCropHeight="160"
+      @confirmCropper="hanldeConfirmCropper"
+      :imageUrl="imageUrl"
+    ></JentCropperUpload>
   </div>
 </template>
 
@@ -8,6 +14,18 @@
 export default {
   name: "App",
   components: {},
+  data() {
+    return {
+      imageUrl: "",
+    };
+  },
+  methods: {
+    hanldeConfirmCropper(result) {
+      console.log("result", result);
+      this.imageUrl =
+        "https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png";
+    },
+  },
 };
 </script>
 

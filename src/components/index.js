@@ -3,10 +3,16 @@ import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 Vue.use(ElementUI);
 
+// 图片裁剪
+import VueCropper from 'vue-cropper'
+Vue.use(VueCropper)
+
 import JentButton from "./jent-button/index";
+import JentCropperUpload from "./jent-cropper-upload/index";
 
 const components = [
-    JentButton
+    JentButton,
+    JentCropperUpload
 ]
 
 const install = function (Vue) {
@@ -18,5 +24,6 @@ const install = function (Vue) {
 export default {
     version: '1.0.0',
     install,
-    JentButton
+    JentButton,
+    JentCropperUpload
 }
