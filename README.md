@@ -32,9 +32,13 @@ Vue.use(VueElementJent)
     :autoCropHeight="120"
     @confirmCropper="hanldeConfirmCropper"
     :imageUrl="imageUrl"
+    :accept="['jpg','png','jpeg']"
+    :allowMaxSize="3"
 ></JentCropperUpload>
 
 autoCropWidth：生成截图框宽度
 autoCropHeight: 生成截图框高度
 confirmCropper：确定上传事件
 imageUrl：确定上传后生成的图片路径
+accept: 允许上传的类型
+allowMaxSize： 允许上传的大小（M）

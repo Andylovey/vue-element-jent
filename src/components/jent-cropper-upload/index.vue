@@ -7,7 +7,11 @@
       :on-change="handleAvatarChange"
       action=""
     >
-      <img v-if="isHaveImageUrl && imageUrl" :src="imageUrl" class="avatar-cropper" />
+      <img
+        v-if="isHaveImageUrl && imageUrl"
+        :src="imageUrl"
+        class="avatar-cropper"
+      />
       <i v-else class="el-icon-plus avatar-cropper-uploader-icon"></i>
     </el-upload>
     <VueCropperModal
@@ -42,18 +46,45 @@ export default {
     },
     imageUrl: {
       type: String,
-      default: '',
+      default: "",
       required: false,
+    },
+    accept: {
+      type: Array,
+      default: () => ["jpg", "png", "jpeg", "gif", "webp"],
+      require: false,
+    },
+    allowMaxSize: {
+      type: Number,
+      require: false,
     },
   },
   data() {
     return {
       dialogVisibleFlag: false,
-      isHaveImageUrl: false
+      isHaveImageUrl: false,
     };
   },
   methods: {
     handleAvatarChange(file) {
+      const picType = file.raw.type;
+      let isIncludesType = this.accept.some((element) => {
+        return picType === `image/${element}`;
+      });
+
+      if (!isIncludesType) {
+        this.$message.error("请上传正确的图片格式");
+        return false;
+      }
+
+      if (this.allowMaxSize) {
+        const isLt = file.raw.size / 1024 / 1024 < this.allowMaxSize;
+        if (!isLt) {
+          this.$message.error(`上传头像图片大小不能超过 ${this.allowMaxSize} MB!`);
+          return false;
+        }
+      }
+
       this.$refs.VueCropperModal.setInfo(file);
       this.getBase64(file.raw, (_imageUrl) => {
         const target = Object.assign(
@@ -65,25 +96,14 @@ export default {
         this.dialogVisibleFlag = true;
         this.$refs.VueCropperModal.edit(target);
       });
-      //   const isJPG = file.raw.type === "image/jpeg";
-      //   const isLt2M = file.raw.size / 1024 / 1024 < 2;
-
-      //   if (!isJPG) {
-      //     this.$message.error("上传头像图片只能是 JPG 格式!");
-      //     return false;
-      //   }
-      //   if (!isLt2M) {
-      //     this.$message.error("上传头像图片大小不能超过 2MB!");
-      //     return false;
-      //   }
     },
     handleCancelModal() {
       this.dialogVisibleFlag = false;
-    //   this.isHaveImageUrl = false
+      //   this.isHaveImageUrl = false
     },
     handleConfirmModal(result) {
       this.dialogVisibleFlag = false;
-      this.isHaveImageUrl = true
+      this.isHaveImageUrl = true;
       this.$emit("confirmCropper", result);
     },
     getBase64(img, callback) {

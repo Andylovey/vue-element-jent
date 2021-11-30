@@ -6,6 +6,8 @@
       :autoCropHeight="160"
       @confirmCropper="hanldeConfirmCropper"
       :imageUrl="imageUrl"
+      :accept="['jpg','png','jpeg']"
+      :allowMaxSize="3"
     ></JentCropperUpload>
   </div>
 </template>
@@ -24,7 +26,7 @@ export default {
       console.log("result", result);
       this.imageUrl =
         "https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png";
-    },
+    }
   },
 };
 </script>
